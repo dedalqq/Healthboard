@@ -13,3 +13,10 @@
 ## Обновление списка серверов без перезапуска сервиса
 
 `$ ./updateConfig.sh`
+
+## Веб-интерфейс
+
+`http://localhost:8080`
+
+login: admin
+password: admin
