@@ -1,0 +1,92 @@
+{{define "login"}}
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Login</div>
+            <div class="panel-body">
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <label for="login">Login</label>
+                        <input name="login" type="text" class="form-control" id="login" placeholder="login">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input name="password" type="password" class="form-control" id="password" placeholder="password">
+                    </div>
+                    <input type="submit" class="btn btn-default" value="login" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+{{end}}
+
+
+{{define "main"}}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand">Healthboard</span>
+            </div>
+
+            <form action="/" method="post" class="navbar-form navbar-right">
+                <input type="hidden" name="logout" value="true" />
+                <input type="submit" class="btn btn-default" value="logout" />
+            </form>
+
+        </div>
+    </nav>
+
+
+    {{range .Services}}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{.Name}}</div>
+
+
+                    <table class="table">
+                    <tr>
+                        <th>url</th>
+                        <th>status</th>
+                        <th>last check</th>
+                    </tr>
+                    {{range .Resources}}
+                        <tr>
+                            <td>{{.URL}}</td>
+                            <td>
+                                {{if eq .Status 0}}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                {{else if eq .Status 1}}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                {{else if eq .Status 2}}<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                {{else if eq .Status 3}}<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                {{end}}
+                            </td>
+                            <td>{{.LastAttempt.Format "01.02.2006 15:04:05" }}</td>
+                        </tr>
+                    {{end}}
+                    </table>
+
+            </div>
+        </div>
+    {{end}}
+{{end}}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>healthboard</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+
+            {{if .Services}}
+                {{template "main" .}}
+            {{else}}
+                {{template "login" .}}
+            {{end}}
+
+            <div class="col-md-12">by dedal.qq &copy; 2017</div>
+		</div>
+	</body>
+</html>

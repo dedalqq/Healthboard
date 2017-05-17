@@ -1,0 +1,34 @@
+[
+  {
+    "name": "yandex.ru",
+    "url": [
+      "http://yandex.ru",
+      "http://map.yandex.ru",
+      "http://mail.yandex.ru",
+      "http://market.yandex.ru",
+      "http://mony.yandex.ru"
+    ]
+},
+{
+  "name": "iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea",
+  "url": [
+    "http://iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com"
+  ]
+},
+{
+  "name": "google.com",
+  "url": [
+    "http://google.com",
+    "http://map.google.com",
+    "http://mail.google.com"
+  ]
+},
+{
+  "name": "not exist",
+  "url": [
+    "http://a",
+    "http://b",
+    "http://c"
+  ]
+}
+]
